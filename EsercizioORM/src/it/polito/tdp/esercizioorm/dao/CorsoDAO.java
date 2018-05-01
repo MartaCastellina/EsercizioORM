@@ -28,7 +28,9 @@ public class CorsoDAO {
 						res.getInt("crediti"),
 						res.getString("nome"),
 						res.getInt("pd") ) ;
-				result.add(corsomap.get(c));
+				result.add(corsomap.get(c)); //aggiungo il valore che mi ritorna corsomap
+				//Corsomap mi ritorna oggetto appena creato se non era ancora presente nella mappa
+				//oppure il corso precedentemente esistente
 			}
 			
 			conn.close();

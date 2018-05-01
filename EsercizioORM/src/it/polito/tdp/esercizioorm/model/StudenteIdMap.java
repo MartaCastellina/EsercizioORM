@@ -3,34 +3,35 @@ package it.polito.tdp.esercizioorm.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CorsoIdMap {
+public class StudenteIdMap {
 
-	private Map<String, Corso> map;
+	private Map<Integer, Studente> map;
 	
-	public CorsoIdMap() {
+	public StudenteIdMap() {
 		map = new HashMap<>();
 	}
-	public Corso get (String codins) {
-		return map.get(codins);
+	public Studente get(int matricola) {
+		return map.get(matricola);
+		//matricola è la chiave della map
 	}
-	public Corso get(Corso corso) {
+	public Studente get(Studente studente) {
 		/*
 		 *Passo tutto un corso e non solo l'ID perchè se non esiste lo devo creare e ho bisogno di tutte
 		 *le informazioni di un corso 
 		 */
 		
-		Corso old = map.get(corso.getCodIns());    //Corso old è quello che devo prendere dalla mappa
+		Studente old = map.get(studente.getMatricola());    //Cerca se esiste o men oquesto studente già
 		if (old == null) {
 			// nella mappa non c'è questo corso! --> Lo dovrò aggiungere
-			map.put(corso.getCodIns(), corso);
-			return corso;
+			map.put(studente.getMatricola(),studente);
+			return studente;
 		}
 		return old; //Se old non è null non voglio creare un oggetto duplicato, esiste già, mi ritorna old
 		//Se esiste corso con quel codId lo ritorno sennò lo creo
 	}
 	
-	public void put(String codins, Corso corso) {
+	public void put(Integer matricola, Studente studente) {
 		//è l'identity map che viene popolata nel DAO però
-		map.put(codins, corso);
+		map.put(matricola, studente);
 	}
 }
