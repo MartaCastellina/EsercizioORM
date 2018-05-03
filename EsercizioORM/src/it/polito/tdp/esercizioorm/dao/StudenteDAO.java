@@ -44,7 +44,7 @@ public class StudenteDAO {
 
 		//fa la stessa cosa di getCorsiFromStudenti 
 		
-		String sql="SELECT s.matricola,s.nome,s.cognome,s.cds FROM student as s,iscrizione as i WHERE s.matricola=i.matricola AND i.codins=?";
+		String sql="SELECT s.matricola,s.nome,s.cognome,s.cds FROM studente as s,iscrizione as i WHERE s.matricola=i.matricola AND i.codins=?";
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
